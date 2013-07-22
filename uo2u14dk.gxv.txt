@@ -1,0 +1,35 @@
+﻿first
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#	new file:   .gitattributes
+#	new file:   .gitignore
+#	new file:   collectRetrain.py
+#	new file:   createIndexDump.py
+#	new file:   createIndexEvent.py
+#	new file:   createIndexRetrain.py
+#	new file:   createMappingDump.py
+#	new file:   createMappingEvent.py
+#	new file:   createMappingRetrain.py
+#	new file:   deleteIndex.py
+#	new file:   deleteMappingDump.py
+#	new file:   deleteMappingEvent.py
+#	new file:   deleteMappingRetrain.py
+#	new file:   getEvent.py
+#	new file:   indexCustomEvent.py
+#	new file:   indexEvent.py
+#	new file:   indexTurk.py
+#	new file:   resetIndex.py
+#	new file:   searchEvent.py
+#	new file:   searchTurk.py
+#	new file:   test.py
+#	new file:   testMysql.py
+#	new file:   updateEvent.py
+#
+
