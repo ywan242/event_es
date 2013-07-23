@@ -35,23 +35,21 @@ def indexDump(conn, event, version):
     dataResponse = response.read()
 
 def updateEvent(event_id, version, key_str, value_str):
-    
     conn = getConnection()
     
     event = getEvent(conn, event_id)
+
+    if key_str == 'start' or key_str == 'end':
+        value_str = value_str.strftime('%Y-%m-%d') + ' 00:00:00'
     
-    if event[key_str] == value_str:
-        return 0
+    if key_str in event and event[key_str] == value_str:
+        return
     
     indexDump(conn, event, version)
     
-    if key_str == 'start' or key_str == 'end':
-        value_str = datetime.datetime.strptime(value_str, '%m/%d/%Y').strftime('%Y-%m-%d') + ' 00:00:00'
-    if key_str == 'start' or key_str == 'end':    
-        script = 'ctx._source.' + key_str + ' = \"' + value_str.strip() + '\"'
-    else:
-        script = 'ctx._source.' + key_str + ' = \"' + re.escape(value_str.strip()) + '\"'
-    valueDict = {'script': script}
+    script = 'ctx._source.' + key_str + ' = new_value'
+    parameter = {'new_value': value_str.strip()}
+    valueDict = {'script': script, 'params': parameter}
     valueStr = json.dumps(valueDict)
     conn.request('POST', '/event_index/event/' + str(event_id) + '/_update', valueStr)
     response = conn.getresponse()
